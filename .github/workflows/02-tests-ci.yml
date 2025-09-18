@@ -45,7 +45,7 @@ jobs:
 
       - name: "Valida se os teste passaram"
         if: ${{ steps.coverage.outputs.coverage < env.COVERAGE_MIN}}
-        run: | #Faltou o pipe
+        run: |
           echo "Cobertura minima não atendida Esperado: - ${{env.COVERAGE_MIN}}%. Atingido: ${{ steps.coverage.outputs.coverage}}% "
           exit 1
 
