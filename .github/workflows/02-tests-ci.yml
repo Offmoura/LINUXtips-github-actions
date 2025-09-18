@@ -28,7 +28,7 @@ jobs:
       - name: "Instalar Deps"
         run: npm ci
 
-      - name: "Rodar tests"
+      - name: "Executar tests"
         run: npm run tests
 
       # INSIRA AQUI A LÓGICA PARA RODAR OS TESTES E VERIFICAR A COBERTURA
@@ -45,8 +45,8 @@ jobs:
 
       - name: "Valida se os teste passaram"
         if: ${{ steps.coverage.outputs.coverage < env.COVERAGE_MIN}}
-        run:
-          echo "Cobertura minima não atendida: Esperado - ${{env.COVERAGE_MIN}}%. Atingido: ${{ steps.coverage.outputs.coverage}}%"
+        run: | #Faltou o pipe
+          echo "Cobertura minima não atendida Esperado: - ${{env.COVERAGE_MIN}}%. Atingido: ${{ steps.coverage.outputs.coverage}}% "
           exit 1
 
   generate-certificate: # DAQUI PARA BAIXO, NÃO ALTERAR
